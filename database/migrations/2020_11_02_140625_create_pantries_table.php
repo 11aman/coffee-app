@@ -14,17 +14,18 @@ class CreatePantriesTable extends Migration
     public function up()
     {
         Schema::create('pantries', function (Blueprint $table) {
-            $table->id('pantry_id')->unsigned();
+            $table->id('pantry_id');
             $table->string('pantry_name');
             $table->text('pantry_description');
-            $table->boolean('pantry_status')->default(false);
+            $table->boolean('pantry_status')->default(0);
             $table->bigInteger('room_id')->unsigned();
             $table->foreign('room_id')->references('room_id')->on('rooms');
              $table->bigInteger('org_id')->unsigned();
             $table->foreign('org_id')->references('org_id')->on('organisations');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
-            $table->dateTime('deleted_at');
+            $table->dateTime('deleted_at')->default('1900-01-01');
+
         });
     }
 

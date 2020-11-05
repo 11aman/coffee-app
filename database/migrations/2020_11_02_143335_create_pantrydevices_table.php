@@ -14,13 +14,13 @@ class CreatePantrydevicesTable extends Migration
     public function up()
     {
         Schema::create('pantrydevices', function (Blueprint $table) {
-            $table->id('device_id')->unsigned();
+            $table->id('device_id');
             $table->string('device_name');
             $table->string('device_ip');
             $table->string('device_email');
             $table->bigInteger('pantry_id')->unsigned();
             $table->foreign('pantry_id')->references('pantry_id')->on('pantries');
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->default(0);
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
             $table->dateTime('deleted_at');

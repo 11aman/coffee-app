@@ -14,16 +14,17 @@ class CreateRoomsTable extends Migration
     public function up()
     {
         Schema::create('rooms', function (Blueprint $table) {
-           $table->id('room_id')->unsigned();
+           $table->id('room_id');
             $table->string('room_name');
             $table->bigInteger('org_id')->unsigned();
             $table->foreign('org_id')->references('org_id')->on('organisations');
             $table->string('room_code');
-            $table->boolean('room_status')->default(false);
+            $table->boolean('room_status')->default(0);
             $table->integer('room_seat');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
-            $table->dateTime('deleted_at');
+            $table->dateTime('deleted_at')->default('1900-01-01');
+
         });
     }
 

@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('add_oragnisation','organisationAPI@add_oragnisation');
+Route::any('Organisation_view','organisationAPI@Organisation_view');
+
+Route::post('add_room','roomAPI@add_room');
+Route::any('Rooms_view','roomAPI@Rooms_view');
+
