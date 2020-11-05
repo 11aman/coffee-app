@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class CreateOrdersTable extends Migration
 {
@@ -24,11 +25,11 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('pantry_id')->unsigned();
             $table->foreign('pantry_id')->references('pantry_id')->on('pantries');
             $table->string('comment');
-            $table->boolean('order_status')->default(0);
+            $table->boolean('order_status')->default(1);
             $table->string('order_number');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
-            $table->dateTime('deleted_at');
+            $table->dateTime('deleted_at')->default(Carbon::now());
 
            
         });

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class CreatePantrydevicesTable extends Migration
 {
@@ -20,10 +21,10 @@ class CreatePantrydevicesTable extends Migration
             $table->string('device_email');
             $table->bigInteger('pantry_id')->unsigned();
             $table->foreign('pantry_id')->references('pantry_id')->on('pantries');
-            $table->boolean('status')->default(0);
+            $table->boolean('status')->default(1);
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
-            $table->dateTime('deleted_at');
+            $table->dateTime('deleted_at')->default(Carbon::now());
             
         });
     }

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class CreateOrderproductsTable extends Migration
 {
@@ -24,7 +25,7 @@ class CreateOrderproductsTable extends Migration
             $table->string('product_comment');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
-            $table->dateTime('deleted_at');
+            $table->dateTime('deleted_at')->default(Carbon::now());
 
            
         });

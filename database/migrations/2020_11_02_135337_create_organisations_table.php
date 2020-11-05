@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class CreateOrganisationsTable extends Migration
 {
@@ -19,10 +20,10 @@ class CreateOrganisationsTable extends Migration
             $table->string('org_description');
             $table->string('org_email');
             $table->string('org_contact');
-            $table->boolean('org_status')->default(0);
+            $table->boolean('org_status')->default(1);
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
-            $table->dateTime('deleted_at')->default('1900-01-01');
+            $table->dateTime('deleted_at')->default(Carbon::now());
         });
     }
 

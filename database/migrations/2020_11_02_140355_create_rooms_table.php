@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class CreateRoomsTable extends Migration
 {
@@ -19,11 +20,11 @@ class CreateRoomsTable extends Migration
             $table->bigInteger('org_id')->unsigned();
             $table->foreign('org_id')->references('org_id')->on('organisations');
             $table->string('room_code');
-            $table->boolean('room_status')->default(0);
+            $table->boolean('room_status')->default(1);
             $table->integer('room_seat');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
-            $table->dateTime('deleted_at')->default('1900-01-01');
+            $table->dateTime('deleted_at')->default(Carbon::now());
 
         });
     }
