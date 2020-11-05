@@ -25,3 +25,8 @@ Route::any('Organisation_view','organisationAPI@Organisation_view');
 Route::post('add_room','roomAPI@add_room');
 Route::any('Rooms_view','roomAPI@Rooms_view');
 
+Route::post('addpantry','pantryAPI@addpantry');
+Route::any('viewpantry','pantryAPI@viewpantry');
+
+Route::post('addproduct','productAPI@addproduct');
+Route::any('viewproduct','productAPI@viewproduct');
