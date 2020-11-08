@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator;
+use Auth;
 use App\Organisations;
 
 class organisationAPI extends Controller
@@ -12,13 +12,19 @@ class organisationAPI extends Controller
     {
         $reqdata = $request->all();
         
-    	$validator=Validator::make($request->all(),[
-    		'org_name'=>'required',
+    	$validator=Validator::make($request->all(),
+            [
+    		'org_name'=>'required|min:3',
     		'org_description'=>'required',
     		'org_email'=>'required',
     		'org_contact'=>'required',
-    		'org_status'=>'required',
-    	]);
+    	],
+        [
+            'org_name.required'=>'Orginization Name not Found',
+            'org_description.required'=>'Orginization Description not Found',
+            'org_email.required'=>'Orginization Email not Found',
+            'org_contact.required'=>'Orginization Contact not Found',
+        ]);
 
         if($validator->fails())
     	{
@@ -31,7 +37,7 @@ class organisationAPI extends Controller
         $p->org_description = $request->org_description;
         $p->org_email = $request->org_email;
         $p->org_contact = $request->org_contact;
-        $p->org_status = $request->org_status;
+        $p->org_status = 1;
         $p->save();
 
 
@@ -40,7 +46,7 @@ class organisationAPI extends Controller
                 'status'=>200,
                 'msg'=>'Organisation added Successfully',
                 'Org_id'=>$p->id,
-
+               
                 
             ]);
         }
