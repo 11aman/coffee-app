@@ -1,0 +1,10 @@
+php artisan down
+php artisan clear-compiled
+php artisan cache:clear
+php artisan config:clear
+php artisan config:cache
+php artisan route:clear 
+php artisan route:cache 
+php artisan route:list 
+php artisan optimize
+php artisan up
