@@ -40,6 +40,3 @@ Route::delete('pantry/{id}','PantryController@deletePantry');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-
-
