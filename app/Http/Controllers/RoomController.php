@@ -120,16 +120,20 @@ class RoomController extends Controller
            
         if (Room::where('room_id', $id)->exists()) {
             $room = Room::where('room_id', $id)->first();
-            $room->room_name = is_null($request->room_name) ? $room->room_name : $room->room_name;
-            $room->room_code = is_null($request->room_code) ? $room->room_code : $room->room_code;
-            $room->room_seat = is_null($request->room_seat) ? $room->room_seat : $room->room_seat;
-            $room->room_status = is_null($request->room_status) ? $room->room_status : $room->room_status;
-            $room->org_id = is_null($request->org_id) ? $room->org_id : $room->org_id;
-            $room->save();
+
+            $room = Room::where('room_id', $id)->update([
+            'room_name' => is_null($request->room_name) ? $room->room_name : $room->room_name,
+            'room_code' => is_null($request->room_code) ? $room->room_code : $room->room_code,
+            'room_seat' => is_null($request->room_seat) ? $room->room_seat : $room->room_seat,
+            'room_status' => is_null($request->room_status) ? $room->room_status : $room->room_status,
+            'org_id' => is_null($request->org_id) ? $room->org_id : $room->org_id,
+             ]);
+            
             return response()->json([
               "status" => "sussess",
               "message" => "Room updated successfully"
             ], 200);
+
           } else {
             return response()->json([
               "status" => "failed",  
@@ -146,6 +150,20 @@ class RoomController extends Controller
      */
     public function deleteRoom($id)
     {
-        //
+        $room = Room::where('room_id','=', $id)->delete();
+        if ($room) {
+             return response()->json([
+              "status" => "sussess",
+              "message" => "room deleted successfully",
+              "code" => 200
+            ], 200);
+
+        } else {
+
+            return response()->json([
+              "status" => "failed",  
+              "message" => "room not found",
+              "code" => 404
+            ], 404);
     }
 }

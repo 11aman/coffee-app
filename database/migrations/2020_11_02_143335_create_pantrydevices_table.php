@@ -24,7 +24,7 @@ class CreatePantrydevicesTable extends Migration
             $table->boolean('status')->default(1);
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
-            $table->dateTime('deleted_at')->default(Carbon::now());
+            $table->dateTime('deleted_at')->nullable();
             
         });
     }

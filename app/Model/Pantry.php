@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pantry extends Model
 {
@@ -11,4 +12,6 @@ class Pantry extends Model
     protected $fillable = [
         'pantry_name', 'pantry_description', 'pantry_status', 'room_id', 'org_id', 'deleted_at'
       ];
+
+      use SoftDeletes;
 }

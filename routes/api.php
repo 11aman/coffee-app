@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('organisation', 'OrganisationController@getAllOrganisation');
 Route::get('organisation/{id}', 'OrganisationController@getOrganisation');
 Route::post('organisation', 'OrganisationController@saveOrganisation');
-Route::put('organisation/{id}', 'OrganisationController@updateOrganisation');
+Route::post('organisation/{id}', 'OrganisationController@updateOrganisation');
 Route::delete('organisation/{id}','OrganisationController@deleteOrganisation');
 
 //For Rooms
@@ -37,6 +37,19 @@ Route::put('pantry/{id}', 'PantryController@updatePantry');
 Route::delete('pantry/{id}','PantryController@deletePantry');
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//For Products
+Route::get('product', 'ProductController@getAllProducts');
+Route::get('product/{id}', 'ProductController@getProduct');
+Route::post('product', 'ProductController@saveProduct');
+Route::post('product/{id}', 'ProductController@updateProduct');
+Route::delete('product/{id}','ProductController@deleteProduct');
+
+
+
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+//For User
+Route::get('user', 'UserController@getAllUsers');
+Route::post('register', 'UserController@AddUser');

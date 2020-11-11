@@ -25,7 +25,7 @@ class CreateOrderproductsTable extends Migration
             $table->string('product_comment');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
-            $table->dateTime('deleted_at')->default(Carbon::now());
+          $table->dateTime('deleted_at')->nullable();
 
            
         });
