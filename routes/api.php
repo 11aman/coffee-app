@@ -16,8 +16,13 @@ use Illuminate\Support\Facades\Route;
 //For Organisation
 Route::get('organisation', 'OrganisationController@getAllOrganisation');
 Route::get('organisation/{id}', 'OrganisationController@getOrganisation');
+<<<<<<< HEAD
 Route::post('saveorganisation', 'OrganisationController@saveOrganisation');
 Route::put('organisation/{id}', 'OrganisationController@updateOrganisation');
+=======
+Route::post('organisation', 'OrganisationController@saveOrganisation');
+Route::post('organisation/{id}', 'OrganisationController@updateOrganisation');
+>>>>>>> ce782fe335ac299d7c6f2da54f44790543496fbd
 Route::delete('organisation/{id}','OrganisationController@deleteOrganisation');
 
 //For Rooms
@@ -60,6 +65,19 @@ Route::put('updateorderproduct/{id}','OrderProductController@updateOrderProduct'
 Route::delete('deleteorderproduct/{id}','OrderProductController@deleteOrderProduct');
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//For Products
+Route::get('product', 'ProductController@getAllProducts');
+Route::get('product/{id}', 'ProductController@getProduct');
+Route::post('product', 'ProductController@saveProduct');
+Route::post('product/{id}', 'ProductController@updateProduct');
+Route::delete('product/{id}','ProductController@deleteProduct');
+
+
+
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+//For User
+Route::get('user', 'UserController@getAllUsers');
+Route::post('register', 'UserController@AddUser');

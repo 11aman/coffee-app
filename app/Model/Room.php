@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Room extends Model
 {
@@ -11,5 +12,6 @@ class Room extends Model
     protected $fillable = [
          'room_name', 'room_code', 'org_id', 'room_status', 'room_seat', 'deleted_at'
     ];
-
+    
+     use SoftDeletes;
 }

@@ -26,7 +26,10 @@ class CreateProductsTable extends Migration
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
             $table->dateTime('deleted_at')->nullable();
+<<<<<<< HEAD
 
+=======
+>>>>>>> ce782fe335ac299d7c6f2da54f44790543496fbd
         });
     }
 

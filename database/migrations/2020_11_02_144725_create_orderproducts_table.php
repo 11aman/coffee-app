@@ -25,7 +25,11 @@ class CreateOrderproductsTable extends Migration
             $table->string('product_comment');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
+<<<<<<< HEAD
             $table->dateTime('deleted_at')->nullable();
+=======
+          $table->dateTime('deleted_at')->nullable();
+>>>>>>> ce782fe335ac299d7c6f2da54f44790543496fbd
 
            
         });

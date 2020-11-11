@@ -15,4 +15,6 @@ class Pantry extends Model
     protected $fillable = [
         'pantry_name', 'pantry_description', 'pantry_status', 'room_id', 'org_id', 'deleted_at'
       ];
+
+      use SoftDeletes;
 }
