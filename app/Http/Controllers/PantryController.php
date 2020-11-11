@@ -152,6 +152,19 @@ class PantryController extends Controller
      */
     public function deletePantry($id)
     {
-        //
+        $pantry = Pantry::where('pantry_id','=',$id)->delete();
+        if($pantry){
+            return response()->json([
+                "status"=>"success",
+                "message"=>"Pantry deleted",
+                "code"=>200
+            ],200);
+        }else{
+            return response()->json([
+                "status"=>"failed",
+                "message"=>"Pantry not found",
+                "code"=>404
+            ],404);
+        }
     }
 }
