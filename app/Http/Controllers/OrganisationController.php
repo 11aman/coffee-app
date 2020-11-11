@@ -26,9 +26,9 @@ class OrganisationController extends Controller
         else{
             return response([
                 "status" => "failed",
-                 "message" => "Organisations Not Found",
-                 "organisation" => $organisation,
-                 "code" => 400
+                "message" => "Organisations Not Found",
+                "organisation" => $organisation,
+                "code" => 400
                ], 404);
         }
         
