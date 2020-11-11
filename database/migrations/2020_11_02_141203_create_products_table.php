@@ -25,8 +25,11 @@ class CreateProductsTable extends Migration
             $table->foreign('org_id')->references('org_id')->on('organisations');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
-            $table->dateTime('deleted_at')->default(Carbon::now());
+            $table->dateTime('deleted_at')->nullable();
+<<<<<<< HEAD
 
+=======
+>>>>>>> ce782fe335ac299d7c6f2da54f44790543496fbd
         });
     }
 

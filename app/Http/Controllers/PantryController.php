@@ -123,12 +123,14 @@ class PantryController extends Controller
            
         if (Pantry::where('pantry_id', $id)->exists()) {
             $pantries = Pantry::where('pantry_id', $id)->first();
-            $pantries->pantry_name = is_null($request->pantry_name) ? $pantries->pantry_name : $pantries->pantry_name;
-            $pantries->pantry_description = is_null($request->pantry_description) ? $pantries->pantry_description : $pantries->pantry_description;
-            $pantries->pantry_status = is_null($request->pantry_status) ? $pantries->pantry_status : $pantries->pantry_status;
-            $pantries->room_id = is_null($request->room_id) ? $pantries->room_id : $pantries->room_id;
-            $pantries->org_id = is_null($request->org_id) ? $pantries->org_id : $pantries->org_id;
-            $pantries->save();
+
+             $pantries = Pantry::where('pantry_id', $id)->update([
+            'pantry_name' => is_null($request->pantry_name) ? $pantries->pantry_name : $request->pantry_name;
+            'pantry_description' => is_null($request->pantry_description) ? $pantries->pantry_description : $request->pantry_description;
+            'pantry_status' => is_null($request->pantry_status) ? $pantries->pantry_status : $request->pantry_status;
+            'room_id' => is_null($request->room_id) ? $pantries->room_id : $request->room_id;
+            'org_id' => is_null($request->org_id) ? $pantries->org_id : $request->org_id;
+             ]);
     
             return response()->json([
               "status" => "sussess",
@@ -152,6 +154,38 @@ class PantryController extends Controller
      */
     public function deletePantry($id)
     {
-        //
+<<<<<<< HEAD
+        $pantry = Pantry::where('pantry_id','=',$id)->delete();
+        if($pantry){
+            return response()->json([
+                "status"=>"success",
+                "message"=>"Pantry deleted",
+                "code"=>200
+            ],200);
+        }else{
+            return response()->json([
+                "status"=>"failed",
+                "message"=>"Pantry not found",
+                "code"=>404
+            ],404);
+=======
+         $room = Room::where('room_id','=', $id)->delete();
+        if ($room) {
+             return response()->json([
+              "status" => "sussess",
+              "message" => "room deleted successfully",
+              "code" => 200
+            ], 200);
+
+        } else {
+
+            return response()->json([
+              "status" => "failed",  
+              "message" => "room not found",
+              "code" => 404
+            ], 404);
+
+>>>>>>> ce782fe335ac299d7c6f2da54f44790543496fbd
+        }
     }
 }
